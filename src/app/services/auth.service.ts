@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   signup(email: string, password: string) {
     return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-  signin(email: string, password: string) {
+  login(email: string, password: string) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
   logout() {
@@ -18,5 +21,12 @@ export class AuthService {
   }
   getActiveUser() {
     return firebase.auth().currentUser;
+  }
+  isUserLogin() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.router.navigateByUrl('home');
+      }
+    });
   }
 }

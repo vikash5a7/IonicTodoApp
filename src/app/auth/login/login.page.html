@@ -1,26 +1,30 @@
 <ion-header>
     <ion-toolbar color="danger">
-        <ion-title>Create an Account </ion-title>
+        <ion-title>Login To Todo App</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding-start ion-padding-end">
     <ion-list>
         <ion-item class="vertical-space">
-            <h1 class="center">To Do App</h1>
+            <div class="center">
+                <span style="color: rgb(255, 0, 0); font-size: 30px;">To</span>
+                <span> Do </span>
+                <span style="color: rgb(144, 223, 120); font-size: 30px;">App</span>
+            </div>
         </ion-item>
-        <form #loginForm=ngForm>
+        <br>
+        <form #loginForm=ngForm style="margin-top: 30px;">
             <ion-item>
                 <ion-label position="stacked">Email</ion-label>
-                <ion-input name="email" required [(ngModel)]="form.email" type="email" placeholder="anything@gmail.com"></ion-input>
+                <ion-input name="email" required [(ngModel)]="form.email" type="email" placeholder="youremail@gmail.com"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="stacked">password</ion-label>
-                <ion-input required email name="password" type="password" [(ngModel)]="form.password" placeholder="123456"></ion-input>
+                <ion-input required name="password" type="password" [(ngModel)]="form.password" placeholder="enter your password"></ion-input>
             </ion-item>
         </form>
     </ion-list>
-
     <ion-button color="danger" [disabled]="!loginForm.valid" expand="block" shape="round" (click)="login()">Login</ion-button>
     <ion-button fill="clear" expand="block" color="danger" (click)="goToRegister()">New User ?</ion-button>
 </ion-content>

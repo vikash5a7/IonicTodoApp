@@ -1,6 +1,6 @@
 import { CommonProviderService } from './../../services/common-provider.service';
 import { Component, OnInit } from '@angular/core';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -12,11 +12,13 @@ export class SignupPage implements OnInit {
   public form = {
     email: null,
     password: null,
+    confirmPassword: null
   };
   constructor(
     public loadingController: LoadingController,
     private router: Router,
     private authService: AuthService,
+    private navController: NavController,
     private common: CommonProviderService
   ) { }
 
@@ -30,7 +32,7 @@ export class SignupPage implements OnInit {
       this.common.loadingDismiss();
       console.log('user data is; ', userData);
       this.common.toastShow('Sucessfully Created account', 'success');
-      this.router.navigateByUrl('login');
+      this.router.navigateByUrl('home');
       }).catch((error) =>
       {
         this.common.loadingDismiss();
@@ -39,6 +41,6 @@ export class SignupPage implements OnInit {
   }
 
   goToLogin() {
-    this.router.navigate(['/login']);
+    this.navController.back();
   }
 }

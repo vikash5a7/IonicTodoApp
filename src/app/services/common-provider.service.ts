@@ -21,7 +21,7 @@ export class CommonProviderService {
 async loadingDismiss() {
     setTimeout(() => {
         return this.loadingController.dismiss();
-    }, 1000);
+    }, );
 }
   async toastShow(messageToast: any, toastColor: string) {
     this.toastCtrl.create({
